@@ -10,11 +10,14 @@ import fastifyCors from "@fastify/cors";
 const app = fastify();
 
 app.register(cookie, {
-  secret: "polls-app",
+  secret: process.env.COOKIE_SECRET,
   hook: "onRequest",
 });
 
-app.register(fastifyCors, { origin: "http://localhost:5173" });
+app.register(fastifyCors, {
+  origin: "http://localhost:5173",
+  credentials: true,
+});
 
 app.register(websocket);
 
