@@ -6,6 +6,7 @@ import cookie from "@fastify/cookie";
 import websocket from "@fastify/websocket";
 import { pollResults } from "./ws/poll-results";
 import fastifyCors from "@fastify/cors";
+import { getVote } from "./routes/get-vote";
 
 const app = fastify();
 
@@ -24,6 +25,7 @@ app.register(websocket);
 app.register(createPoll);
 app.register(getPoll);
 app.register(voteOnPoll);
+app.register(getVote);
 
 app.register(pollResults);
 
