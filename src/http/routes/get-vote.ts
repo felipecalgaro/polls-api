@@ -16,7 +16,7 @@ export async function getVote(app: FastifyInstance) {
       return reply.status(100).send({ pollOptionId: undefined });
     }
 
-    const pollOptionId = await prisma.vote.findUnique({
+    const vote = await prisma.vote.findUnique({
       where: {
         sessionId_pollId: {
           pollId,
@@ -28,12 +28,12 @@ export async function getVote(app: FastifyInstance) {
       },
     });
 
-    if (!pollOptionId) {
+    if (!vote) {
       return reply.status(400).send({ message: "Vote not found." });
     }
 
     return reply.send({
-      pollOptionId,
+      pollOptionId: vote.pollOptionId,
     });
   });
 }
