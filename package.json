@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsx watch src/http/server.ts"
+    "dev": "tsx watch src/http/server.ts",
+    "build": "npx tsc && npx prisma migrate deploy",
+    "prod": "node dist/http/server.js"
   },
   "keywords": [],
   "author": "",
