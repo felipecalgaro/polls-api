@@ -16,7 +16,7 @@ app.register(cookie, {
 });
 
 app.register(fastifyCors, {
-  origin: "http://localhost:5173",
+  origin: process.env.CLIENT_URL,
   credentials: true,
 });
 
@@ -29,6 +29,6 @@ app.register(getVote);
 
 app.register(pollResults);
 
-app.listen({ port: 3333 }).then(() => {
+app.listen({ port: Number(process.env.PORT) }).then(() => {
   console.log("Server running");
 });
