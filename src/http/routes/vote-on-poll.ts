@@ -64,6 +64,8 @@ export async function voteOnPoll(app: FastifyInstance) {
         path: "/",
         maxAge: 60 * 60 * 24 * 30,
         httpOnly: true,
+        sameSite: "none",
+        secure: true,
       });
     }
 
